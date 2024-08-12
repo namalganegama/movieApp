@@ -1,11 +1,11 @@
 import {useState} from "react";
 import { Text, View } from 'react-native';
 
-export function Movies() {
+export function TvShows() {
 
   const [data,setData] = useState('');
 
-  async function getMovies(){
+  async function getTvShows(){
       try {
         const response = await fetch('https://api.themoviedb.org/3/discover/movie');
         setData = await response.json();
@@ -15,21 +15,24 @@ export function Movies() {
       }
     }
 
-    getMovies();
+    getTvShows();
 
   
 
   return (
     <View style={styles.container}>
-      <Text>Movies</Text>
+      <Text>Tv Shows</Text>
+
+      <TouchableOpacity>
 
       <View style={styles.box}>
 
-        <Text>{data.results.original_title}</Text>
+        <Text>{data.results.original_name}</Text>
       </View>
 
       <StatusBar style="auto" />
     </View>
+    </TouchableOpacity>
   );
 }
 
